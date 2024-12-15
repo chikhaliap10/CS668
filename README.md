@@ -1,12 +1,12 @@
 # Leveraging Predictive Analytics to Revolutionize Inventory Management in Online Retail
 
-### Prashant Chikhalia
+### Prashant Chikhalia (Final Project)
 
 ## Objective
-To develop predictive models that optimize inventory management by accurately forecasting stock levels, thereby reducing costs and preventing stockouts.
+To develop machine learning models that optimize inventory management by accurately forecasting demand, calculating safety stock, and minimizing stockouts and overstock scenarios.
 
 ## Motivation
-This project aims to improve inventory management in online retail by using a forecasting model to tackle common issues like overstock and stockouts, leveraging data-driven insights and machine learning.
+This project addresses key challenges in online retail inventory management, such as stockouts and overstocking, by leveraging predictive analytics. Advanced models like XGBoost, ARIMA, and Exponential Smoothing were applied to forecast demand, ensuring optimized stock levels and operational efficiency.
 
 ## Research Questions
 1. What drives purchasing behavior across product categories in online retail?
@@ -15,7 +15,8 @@ This project aims to improve inventory management in online retail by using a fo
 4. What data-driven strategies can mitigate overstock and stockouts through accurate forecasting?
 
 ## Literature Review
-The literature highlights the need for accurate demand forecasting and efficient inventory management. Advanced models like ensemble learning and hybrid approaches improve prediction accuracy but require significant computational power. This project uses machine learning to optimize demand forecasting and stock adjustments, with tools like SHAP for interpretability and Streamlit for real-time updates, aiming to make inventory management more data-driven and transparent.
+1. Literature emphasizes the importance of demand forecasting for inventory optimization. Advanced methods like XGBoost and hybrid models significantly enhance prediction accuracy, especially in e-commerce.  
+2. This project leverages time-series models (ARIMA, Exponential Smoothing) and machine learning (XGBoost) to address challenges in stock management, combining accuracy with practical inventory planning techniques.
 
 ## Dataset Overview
 The dataset comprises approximately 540,000 rows and 8 columns, covering various aspects of sales transactions for an online retail business primarily operating in the United Kingdom. Key features include:
@@ -35,26 +36,37 @@ The dataset comprises approximately 540,000 rows and 8 columns, covering various
 
 ## EDA & Methodology
 
-**Data Preprocessing**: Addressed missing values, removed duplicates, and ensured accurate data types. Engineered new features, such as revenue per transaction.
+**Data Preprocessing**: Addressed missing values, removed duplicates, and converted data types. Created new features like revenue per transaction, `IsWeekend`, and rolling averages.
 
 **Analysis Approach**:
-1. **Transaction Analysis**: Explored key patterns in quantity, unit price, and revenue distributions, identifying right-skewed trends.
-2. **Country Insights**: Analyzed transaction counts by country, highlighting the UK as the primary market.
-3. **Future Steps**: Plan to conduct further time-based analysis (e.g., trends by month, day) and customer segmentation for targeted insights.
+1. **Transaction Analysis**: Explored trends in quantity, price, and revenue, identifying seasonal spikes and demand variability.
+2. **Country Insights**: Highlighted the UK as the dominant market, with smaller contributions from other countries.
+3. **Feature Engineering**: Incorporated `Day of Week`, `7-Day Avg Sales`, and lag features for demand forecasting.
+
+**Modeling**: Applied Exponential Smoothing, ARIMA, and XGBoost for demand prediction. Evaluated models based on RMSE and feature importance analysis.
 
 ## Model Results & Evaluation
 
 **Inventory Demand Prediction:**
-- **Model Used**: Linear Regression (with potential to test other models if needed).
-- **Evaluation Metrics**: Mean Absolute Error (MAE), Root Mean Squared Error (RMSE), and R² Score.
-- **Results:**
-    - **Linear Regression**: MAE = 320.45, RMSE = 950.32, R² = 0.92
+- **Models Used**: Exponential Smoothing, ARIMA, XGBoost.  
+- **Evaluation Metrics**: RMSE, Mean Squared Error (MSE).  
+- **Results**:
+  - **XGBoost**: RMSE = 9,423 (Best Performance).  
+  - **ARIMA**: MSE = 12,304.  
+  - **Exponential Smoothing**: MSE = 15,840.
 
-## Next Steps
-1. **Advanced EDA:** Analyze trends and segment customers.
-2. **Feature Engineering:** Create and normalize new features.
-3. **Modeling:** Use clustering and time series forecasting.
-4. **Evaluation:** Assess model with metrics.
-5. **Visualization:** Create visuals and finalize insights.
-6. **Documentation:** Summarize in a report.
-7. **Model Tuning:** Experiment with advanced models.
+**Key Insights**:
+- XGBoost outperformed other models due to its ability to handle complex patterns.
+- Important predictors: `IsWeekend`, `7-Day Avg Sales`.
+
+## Conclusion
+
+This project successfully demonstrated the power of predictive analytics in optimizing inventory management for online retail. By leveraging machine learning models such as XGBoost, ARIMA, and Exponential Smoothing, we achieved accurate demand forecasting and actionable insights to improve stock management.
+
+Key outcomes include:
+- XGBoost emerged as the best-performing model with an RMSE of 9,423, highlighting its ability to handle complex patterns in demand.
+- Feature importance analysis revealed `IsWeekend` and `7-Day Avg Sales` as the most significant predictors, providing valuable insights for inventory planning.
+- Safety stock calculations using lead time variability ensured optimal buffer levels, reducing risks of stockouts and overstocking.
+
+This project highlights the importance of combining advanced analytics with feature engineering to solve real-world challenges in e-commerce inventory management.
+
